@@ -25,6 +25,13 @@ class Cart(games.Sprite):
         for cup in self.overlapping_sprites:
             self.score.value +=10
             self.score.right = games.screen.width -10
+            #добавил нового кота и скорость падения бокалов
+            if self.score.value==50:
+                new_cat = Cat(speed=10, y=75, odds_change=100)
+                games.screen.add(new_cat)
+                Cup.speed=2
+            if self.score.value==300:
+                Cup.speed=4
             cup.handle_caught()
 class Cup(games.Sprite):
     '''Падающий бокал.'''
